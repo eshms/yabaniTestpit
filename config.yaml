@@ -1,0 +1,9 @@
+path: /Users/osman/Documents/GitHub/yabanitestpit2/
+train: train/images
+val: train/images
+
+# classes
+names:
+  0: "bowl"
+  1: "lettuce"
+  2: "not-lettuce"
