@@ -1,3 +1,6 @@
 .venv/
-train/
-videos/
+videos/lettuce_y.mp4
+videos/lettuce_y_out.mp4
+/train
+/test
+/valid

@@ -3,16 +3,16 @@ import cv2
 from ultralytics import YOLO
 
 # YOLO modelini yükle
-model_path = 'runs/detect/train/weights/last.pt'  # Model dosyasını uygun olanla değiştirin
+model_path = 'runs/detect/train/best.pt'  # Model dosyasını uygun olanla değiştirin
 model = YOLO(model_path)
 
 IMAGE_PATH = 'test1.jpg'  # Resim dosyasının adını uygun olanla değiştirin
 
-IMAGES_DIR = os.path.join('.', 'images')
+IMAGES_DIR = os.path.join('.', 'test', 'images')
 # pretrained YOLOv8n model
 
 # Run batched inference on a list of images
-results = model(['./images/test1.jpg', "./images/bitkim.jpg","./images/test2.jpg"])  # return a list of Results objects
+results = model(["images/bitkim.jpg"],stream=True) # return a list of Results objects
 
 # Process results list
 for result in results:
