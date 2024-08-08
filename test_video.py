@@ -20,7 +20,7 @@ else:
         H, W, _ = frame.shape
         out = cv2.VideoWriter(video_path_out, cv2.VideoWriter_fourcc(*'XVID'), int(cap.get(cv2.CAP_PROP_FPS)), (W, H))
 
-        model_path = os.path.join('.', 'runs', 'detect', 'train', 'best.pt')
+        model_path = os.path.join('.', 'runs', 'detect', 'train', 'weights','best.pt')
 
         # Load a model
         model = YOLO(model_path)  # load a custom model

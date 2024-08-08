@@ -2,7 +2,7 @@ import cv2
 from ultralytics import YOLO
 
 # YOLO modelini yükle
-model_path = 'runs/detect/train2/weights/best.pt'  # Model dosyasını uygun olanla değiştirin
+model_path = 'runs/detect/train/weights/best.pt'  # Model dosyasını uygun olanla değiştirin
 model = YOLO(model_path)  # load a custom model
 
 cap = cv2.VideoCapture(0)  # Open the default webcam (index 0)
