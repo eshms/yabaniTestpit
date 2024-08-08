@@ -3,7 +3,7 @@ import cv2
 from ultralytics import YOLO
 
 # YOLO modelini yükle
-model_path = 'runs/detect/train/best.pt'  # Model dosyasını uygun olanla değiştirin
+model_path = 'runs/detect/train/weights/best.pt'  # Model dosyasını uygun olanla değiştirin
 model = YOLO(model_path)
 
 IMAGE_PATH = 'test1.jpg'  # Resim dosyasının adını uygun olanla değiştirin

@@ -2,7 +2,7 @@ import os
 import cv2
 from ultralytics import YOLO
 
-VIDEO_PATH = 'lettuce_y.mp4'  # Video file name
+VIDEO_PATH = 'yabani.mp4'  # Video file name
 VIDEOS_DIR = os.path.join('.', 'videos')
 video_path = os.path.join(VIDEOS_DIR, VIDEO_PATH)
 cap = cv2.VideoCapture(video_path)
@@ -29,15 +29,25 @@ else:
 
         while ret:
             results = model(frame)[0]
+            found = False
 
             for result in results.boxes.data.tolist():
                 x1, y1, x2, y2, score, class_id = result
 
-                if score > threshold:
-                    label = f"{results.names[int(class_id)].upper()} {score:.2f}"
-                    cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 4)
-                    cv2.putText(frame, label, (int(x1), int(y1 - 10)),
-                                cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA)
+                if score <= threshold:
+                    continue
+
+                label = f"{results.names[int(class_id)].upper()} {score:.2f}"
+                cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 4)
+                cv2.putText(frame, label, (int(x1), int(y1 - 10)),
+                            cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA)
+
+                # Print "Found" if class_id is detected ('bikti')
+                print(f"Found: {results.names[int(class_id)].upper()}")
+                found = True
+
+            if not found:
+                print("Not Found")
 
             out.write(frame)
             cv2.imshow('YOLO Detection', frame)
